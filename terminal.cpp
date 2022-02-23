@@ -28,13 +28,7 @@ string login() {
 }
 
 int handleInput(string input, string path) {
-    if (input == "ls") {
-        for (const auto & entry : std::filesystem::directory_iterator(path)) {
-            cout << entry.path()
-        }
-    }
 }
-
 
 int main() {
     bool running = true;
