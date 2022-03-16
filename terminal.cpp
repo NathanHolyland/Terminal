@@ -28,20 +28,29 @@ string login() {
 }
 
 int handleInput(string input, string path) {
+    int divider = input.find(" ");
+    string opcode = input.substr(0, divider);
+    string operand = input.substr(divider+1, input.length());
+    if (opcode == "run") {
+        const char * c = operand.c_str();
+        system(c);
+    }
 }
 
 int main() {
     bool running = true;
     string userInput;
-    string path = "T:/home";
+    string path = "T:/home/";
     string current_user = "";
 
     while (running) {
         if (current_user == "") {
             current_user = login();
-            path = path + "/" + current_user;
+            if (current_user == "") {
+                continue;
+            }
         }
-        cout << path+"$ ";
+        cout << path+current_user+"$ ";
         cin >> userInput;
         cout << "\n";
         if (userInput == "end") {running = false;}
